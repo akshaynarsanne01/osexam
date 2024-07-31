@@ -1,0 +1,38 @@
+find number of lines in /etc/passwd
+wc -l /etc/passwd
+
+write first 10 lines of "ps-e" command to file "process.txt"
+ps -e | head -n 10 > process.txt
+cat process.txt
+
+create tile "my.txt" and change its permission so that only group is allowed to read and write
+touch my.txt
+chgrp groupname my.txt
+chmod g+rw my.txt
+chmod o-rwx my.txt
+chmod u-rwx my.txt
+
+create nwe user "cdac2" with default bash shell
+sudo useradd -m -s /bin/bash cdac2
+sudo passwd cdac2
+sudo usermod -aG sudo cdac2
+
+change the owner ship of "my.txt" to "cdac2"
+chown cdac2 my.txt
+chown -R cdac2 .
+
+
+write bash script to find the given user input file is user readable or not
+#!/bin/bash
+
+# Prompt user to enter a file path
+read -p "Enter a file path: " file_path
+
+# Check if the file exists and is readable
+if [ -f "$file_path" ] && [ -r "$file_path" ]; then
+  echo "The file $file_path is readable."
+else
+  echo "The file $file_path is not readable or does not exist."
+fi
+
+write a program to print first 10 fibonacci numbers in java
